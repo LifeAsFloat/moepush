@@ -92,7 +92,7 @@ export function RegisterForm(props: React.HTMLAttributes<HTMLDivElement>) {
             <Label htmlFor="username">用户名</Label>
             <Input
               id="username"
-              placeholder="请输入用户名"
+              placeholder="3-20位字母、数字、下划线或横杠"
               type="text"
               autoCapitalize="none"
               autoComplete="username"
@@ -101,30 +101,32 @@ export function RegisterForm(props: React.HTMLAttributes<HTMLDivElement>) {
               required
               minLength={3}
               maxLength={20}
+              pattern="[a-zA-Z0-9_-]+"
+              title="用户名只能包含字母、数字、下划线和横杠"
             />
           </div>
           <div className="grid gap-1">
             <Label htmlFor="password">密码</Label>
             <Input
               id="password"
-              placeholder="请输入密码"
+              placeholder="请输入密码（至少8位）"
               type="password"
               autoComplete="new-password"
               disabled={isLoading}
               required
-              minLength={6}
+              minLength={8}
             />
           </div>
           <div className="grid gap-1">
             <Label htmlFor="confirmPassword">确认密码</Label>
             <Input
               id="confirmPassword"
-              placeholder="请再次输入密码"
+              placeholder="请再次输入密码（至少8位）"
               type="password"
               autoComplete="new-password"
               disabled={isLoading}
               required
-              minLength={6}
+              minLength={8}
             />
           </div>
           <Button disabled={isLoading}>

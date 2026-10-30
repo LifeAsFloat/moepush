@@ -27,6 +27,10 @@ export const {
             GithubProvider({
                 clientId: process.env.AUTH_GITHUB_ID!,
                 clientSecret: process.env.AUTH_GITHUB_SECRET!,
+                // GitHub 回调会返回 iss 参数(RFC 9207)，必须与 GitHub 实际返回的 issuer 一致，
+                // 否则 oauth4webapi 会用 "https://authjs.dev" 占位符比对并抛出
+                // unexpected "iss" (issuer) response parameter value
+                issuer: "https://github.com/login/oauth",
             }),
             CredentialsProvider({
                 name: "credentials",
